@@ -1,0 +1,223 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: beige;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;     
+
+}
+/*general*/
+.h1-strong{
+   
+    font-size: 35px;
+    font-weight: bold;
+   /* margin-left: 13px;*/
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid;
+    background-color: b#b53c87;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+  
+}
+.active{
+    background: #9c1111;
+  
+}
+.pointer{
+    cursor: #cc1717;
+}
+
+/*editar header*/
+
+nav{
+    background-color: #b53c87 ;
+    height: 50px;
+    border:1px solid white;
+
+}
+
+nav ul li{
+    float: left;
+    list-style: none;
+    margin: 10px;
+    line-height: 30px;
+}
+/*
+.navigation{
+    margin: 0px;
+    padding: 0px !important;
+    border-radius: 0;
+}
+*/
+.navigation .navbar{
+ 
+   border-radius: 0px !important;
+   background: #b53c87  !important;
+   border: none;
+   text-align: center;
+}
+
+.navigation .navbar * {
+    color: white !important;
+    
+}
+.navigation .navbar a:hover{
+    background: #9c1111 !important;
+}
+
+.navigation .navbar .dropdown-menu *{
+    color:black !important;
+
+}
+
+.navigation-default .navbar-nav> .open>a, .navbar-default .navbar-nav>.open>a:focus{
+    background: #9c1111 !important;
+}
+
+.navigation .navbar .dropdown-menu a:hover{
+    background: #eeeeee !important;
+}
+
+.navigation .avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 4px;
+    margin-right: 1px;
+}
+
+.navigation .avatar img{
+    height: auto;
+    width: 30px;
+}
+
+.jumbotron{
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.user-image-for-edit img{
+    height: 40px;
+}
+
+
+/*gente*/
+.item-user .image-user{
+    width: 75px;
+    height: 75px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.item-user .image-user img{
+    width: 120px;
+
+}
+
+.item-user .user-name{
+    margin-top: 10px;
+}
+
+.item-user .user-name .nickname{
+    color: purple;
+}
+
+.item-user .user-name .name-surname a{
+    color: #444;
+    font-weight: bold;
+}
+
+.avatar-default{
+    width: 100% !important;
+}
+
+/*sidebar*/
+.sidebar-32{
+    width: 32% !important;
+    padding: 0px !important;
+    
+}
+#user-card{
+    padding: 25px;
+    width: 30%;
+}
+
+#user-card .avatar{
+    width: 75px;
+    height: 75px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+#user-card .avatar img{
+    width: 100%;
+}
+
+#user-card .name-surname{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+#user-card .name-surname a{
+    color: #666;
+ 
+}
+
+#user-card .name-surname .nickname{
+    color: #969393;
+}
+
+#user-card .stats{
+    border-top: 1px solid #eee ;
+    margin-top: 10px;
+}
+
+#user-card .stats a:hover{
+   text-decoration: none;
+}
+
+#user-card .stats a:hover .number-stats{
+    color:green;
+
+}
+
+#user-card .label-stats,
+#user-card .number-stats{
+    display: block;
+    text-align: center;
+    transition: all 300ms;
+}
+
+#user-card .label-stats{
+    font-weight: bold;
+    color: #666;
+}
+
+#user-card .number-stats{
+    font-weight: bold;
+    color: green;
+}
+
+#user-card .following-data{
+    float: left;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 10px;
+    border-right: 2px solid #eee;
+}
+
+#user-card .following-data:first-child{
+    padding-left: 6px;
+}
+
+#user-card .following-data:last-child{
+    border: none;
+}

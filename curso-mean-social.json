@@ -1,0 +1,11 @@
+{
+  "name": "curso-mean-social",
+  "version": "1.0.0",
+  "description": "backend para el proyecto del curso Desarrollar una red social con angular y node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aid",
+  "license": "MIT"
+}
