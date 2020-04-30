@@ -6,7 +6,7 @@ var path = require('path');
 
 //modelo de usuarios
 var User = require('../models/user');
-var follow = require ('../models/follow');
+var Follow = require ('../models/follow');
 var Publication = require('../models/publication');
 var jwt = require('../services/jwt');
 
@@ -38,7 +38,7 @@ function saveUser(req,res){
         user.role = 'ROLE_USER';
         user.image = null;
 
-//controlar usuarios duplicados
+  //controlar usuarios duplicados
         User.find({ $or: [ //busca todos los registros
             {email: user.email.toLowerCase()},
             {nick: user.nick.toLowerCase()}
@@ -48,21 +48,21 @@ function saveUser(req,res){
                 if(users && users.length >=1){
                     return res.status(200).send({message: 'El usuario ya existe'});
                 } else {
-       //cifra pass y guarda datos
-       bcrypt.hash (params.password, null, null, (err, hash)=>{
-        user.password = hash;
+                    //cifra pass y guarda datos
+                    bcrypt.hash (params.password, null, null, (err, hash)=>{
+                        user.password = hash;
 
-        user.save((err, userStored)=>{
-            if (err) return res.status (500).send ({message: 'Error al guardar el usuario'});
+                        user.save((err, userStored)=>{
+                            if (err) return res.status (500).send ({message: 'Error al guardar el usuario'});
 
-            if (userStored){
-                res.status(200).send({user: userStored});
-            } else {
-                res.status(404).send({message: 'No se ha registrado usuario'});
-            }
-        });
+                            if (userStored){
+                                res.status(200).send({user: userStored});
+                            } else {
+                                res.status(404).send({message: 'No se ha registrado usuario'});
+                            }
+                        });
 
-    });
+                    });
                 }
             });
         
@@ -74,39 +74,33 @@ function saveUser(req,res){
 }
 //LOGIN
 function loginUser(req, res){
-    var params = req.body;
+	var params = req.body;
 
-    var email= params.email;
-    var password = params.password;
+	var email = params.email;
+	var password = params.password;
 
-    User.findOne({email: email }, (err, user)=>{
+	User.findOne({email: email}, (err, user) => {
+		if (err) return res.status(500).send({message: 'Error en la petición!!'});
+		if (user){
+			bcrypt.compare(password, user.password, (err, check) => {
+				if (check){
+				if (params.gettoken){ 
+                    //devolver token y generar token
+					return res.status(200).send({token: jwt.createToken(user)});
+				} else {
+					// devolver datos de usuario
+					user.password = undefined;
+					return res.status(200).send({user});
+				}
 
-        if(err) return res.status(500).send({message:'Error en la petición'});
-
-        if(user){
-            bcrypt.compare(password, user.password, (err, check)=>{
-                if(check){
-                                  
-                    if(params.gettoken){
-       //devolver token y generar token
-       return res.status(200).send({
-           token: jwt.createToken(user)
-       });
-                    }else{
-                   //devolver datos de usuario
-                    }
-                    user.password = undefined;
-                    return res.status(200).send({user})
-
-                } else{
-                    return res.status(404).send({message:'El usuario no se puede identificar'});
-                }
-            });
-        } else {
-            return res.status(404).send({message:'El usuario no se puede identificar!!!'}); 
-        }
-
-    });
+			} else {
+				return res.status(404).send({message: 'El usuario no se puede identificar'});
+			}
+		});
+		} else {
+			return res.status(404).send({message: 'El usuario no se puede identificar!!!'});
+		}
+	});
 }
 
 //conseguir datos de usuario

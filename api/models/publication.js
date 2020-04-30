@@ -3,7 +3,7 @@
 var mongoose = require ('mongoose');
 var Schema = mongoose.Schema;
 //forma de publicacion
-var publicationSchema = Schema({
+var PublicationSchema = Schema({
     text: String,
     file: String,
     created_at: String,
@@ -11,4 +11,4 @@ var publicationSchema = Schema({
 
 });
 
-module.exports = mongoose.model('Publication',publicationSchema);
+module.exports = mongoose.model('Publication',PublicationSchema);
